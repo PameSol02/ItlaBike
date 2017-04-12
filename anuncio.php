@@ -101,8 +101,8 @@ if ($_POST) {
 					<option value="Chopper">Chopper</option>
 					<option value="Tandem">Tandem</option>
 					<option value="Triathlon">Triathlon</option>
-					<option value="Down Hill">Down Hill</option>
-					<option value="Cross Country">Cross Country</option>
+					<option value="DownHill">Down Hill</option>
+					<option value="CrossCountry">Cross Country</option>
 				</select>
 			</div>
 			<div class="form-group">

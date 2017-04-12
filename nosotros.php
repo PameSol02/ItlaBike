@@ -4,6 +4,9 @@ require_once('app/init.php');
 
 plantilla::iniciar();
 
+$publicidad = UserDB::getPublicidad();
+arsort($publicidad);
+
 ?>
 
 <div class="container">
@@ -26,8 +29,13 @@ plantilla::iniciar();
 		</p>
 	</div>
 	<div class="col-md-4 col-md-offset-1">
-		<img src="images/anuncio.jpg" class="img-responsive">
-		<br>
-		<img src="images/anuncio2.jpg" class="img-responsive">
-	</div>
+	<?php
+		foreach ($publicidad as $p) {
+			echo "
+				<a href=\"$p->link\"><img src=\"$p->foto\" class=\"img-responsive\"></a>
+			<br>
+			"; 
+		}
+	?>
+</div>
 </div>

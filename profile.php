@@ -85,7 +85,7 @@ $userAds = UserDB::getUserAd($_SESSION['user_id']);
 				<br>
 				<div class="col-md-12 col-xs-12">
 					<div class="col-md-3 col-xs-3">
-						<img src="<?php echo $_SESSION['user_image'];?>" class="img-circle">
+						<img src="<?php if (isset($_SESSION['user_image']) && $_SESSION['user_image'] != "") { echo $_SESSION['user_image']; } else { echo "images/profile.png";}?>" class="img-circle" width="120px" height="120px">
 					</div>
 					<div class="col-md-9 col-xs-9">
 						<form method="post" action="profile.php" class="form-horizontal">
@@ -98,7 +98,7 @@ $userAds = UserDB::getUserAd($_SESSION['user_id']);
 							<div class="form-group">
 								<label for="iApellido" class="col-lg-2 control-label text-primary">Apellido</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" id="iApellido" name="iApellido" placeholder="Apellido" value="<?php echo $_SESSION['user_lastName'];?>">
+									<input type="text" class="form-control" id="iApellido" name="iApellido" placeholder="Apellido" value="<?php if (isset($_SESSION['user_lastName'])) { echo $_SESSION['user_lastName']; } ?>">
 								</div>
 							</div>
 							<div class="form-group">

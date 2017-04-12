@@ -35,10 +35,12 @@ require_once("database/userDB.php");
 					$_SESSION['user_id'] = $result;
 					$_SESSION['user_name'] = $usuario['name'];
 					$_SESSION['user_image'] = $usuario['picture']['url'];
+					$_SESSION['user_email'] = $usuario['email'];
 				} else {
 					$_SESSION['user_id'] = $isEmailExits->usuarioId;
 					$_SESSION['user_name'] = $isEmailExits->nombre;
 					$_SESSION['user_image'] = $isEmailExits->foto;
+					$_SESSION['user_email'] = $isEmailExits->email;
 				}
 
 				return true;

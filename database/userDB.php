@@ -183,6 +183,22 @@ class UserDB {
 		return $data;
 	}
 
+	public static function getAdCategory($categoria) {
+		self::checkDBC();
+		$con = self::$connection->conn;
+
+		$sql = "SELECT anuncio.anuncioId, anuncio.titulo, anuncio.descripcion, anuncio.precio, anuncio.marca, anuncio.modelo, anuncio.accionId, anuncio.fecha, max(anuncioImage.image) as foto FROM anuncio inner join anuncioImage on (anuncio.anuncioId = anuncioImage.anuncioId) where anuncio.categoria = '{$categoria}' group by anuncio.anuncioId;";
+
+		$result = mysqli_query($con, $sql);
+
+		$data = array();
+		while ($row = mysqli_fetch_object($result)) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
+
 	public static function getAd($id) {
 		self::checkDBC();
 		$con = self::$connection->conn;

@@ -40,11 +40,11 @@ class plantilla{
 							<li class="dropdown">
 								<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="">Chopper</a></li>
-									<li><a href="">Tandem</a></li>
-									<li><a href="">Triathlon</a></li>
-									<li><a href="">Down Hill</a></li>
-									<li><a href="">Cross Country</a></li>
+									<li><a href="categoria.php?c=chopper">Chopper</a></li>
+									<li><a href="categoria.php?c=tandem">Tandem</a></li>
+									<li><a href="categoria.php?c=triathlon">Triathlon</a></li>
+									<li><a href="categoria.php?c=downhill">Down Hill</a></li>
+									<li><a href="categoria.php?c=crosscountry">Cross Country</a></li>
 								</ul>
 							</li>
 							<li><a href="nosotros.php">Nosotros</a>
@@ -53,13 +53,13 @@ class plantilla{
 						<?php if (isset($_SESSION['usuarioId']) || isset($_SESSION['user_id'])): ?>
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="anuncio.php">Publica Anuncio</a></li>
-								<?php if ($_SESSION['user_image'] != ""): ?>
+								<?php if (isset($_SESSION['user_image']) && $_SESSION['user_image'] != ""): ?>
 									<li>
-										<img src="<?php echo $_SESSION['user_image'];?>" class="img-circle">
+										<img src="<?php echo $_SESSION['user_image'];?>" class="img-circle" width="50px" height="50px">
 									</li>
 								<?php else: ?>
 									<li>
-										<img src="images/profile.png" class="img-circle">
+										<img src="images/profile.png" class="img-circle" width="50px" height="50px">
 									</li>
 								<?php endif; ?>
 								<li class="dropdown">
@@ -109,64 +109,28 @@ class plantilla{
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 							<h4 class="modal-title text-primary">Registrarme</h4>
 						</div>
-						<form method="post" action="index.php">
+						<form method="post" action="index.php" class="text-primary">
 							<div class="modal-body">
 								<div>
 									<div class="form-group">
 										<label for="iNombre">Nombre</label>
-										<input type="text" class="form-control" id="iNombre" name="iNombre">
+										<input type="text" class="form-control" id="iNombre" name="iNombre" required>
 									</div>
 									<div class="form-group">
 										<label for="iApellido">Apellido</label>
-										<input type="text" class="form-control" id="iApellido" name="iApellido">
+										<input type="text" class="form-control" id="iApellido" name="iApellido" required>
 									</div>
 									<div class="form-group">
 										<label for="iEmail">Correo Electronico</label>
-										<input type="email" class="form-control" id="iEmail" name="iEmail">
+										<input type="email" class="form-control" id="iEmail" name="iEmail" required>
 									</div>
 									<div class="form-group">
 										<label for="iPassword">Contraseña</label>
-										<input type="password" class="form-control" id="iPassword" name="iPassword">
-									</div>
-									<div class="form-group">
-										<label for="iConfirmPassword">Confirmar Contraseña</label>
-										<input type="password" class="form-control" id="iConfirmPassword" name="iConfirmPassword">
-									</div>
-									<div class="form-group ">
-										<label for="iCalle">Calle</label>
-										<input type="text" class="form-control" id="iCalle" name="iCalle">
-									</div>
-									<div class="form-group ">
-										<label for="iNumero">Numero</label>
-										<input type="number" class="form-control" id="iNumero" name="iNumero">
-									</div>
-									<div class="form-group ">
-										<label for="iProvincia">Provincia</label>
-										<input type="text" class="form-control" id="iProvincia" name="iProvincia">
-									</div>
-									<div class="form-group ">
-										<label for="iSector">Sector</label>
-										<input type="text" class="form-control" id="iSector" name="iSector">
-									</div>
-									<div class="form-group ">
-										<label for="iCiudad">Ciudad</label>
-										<input type="text" class="form-control" id="iCiudad" name="iCiudad">
-									</div>
-									<div class="form-group ">
-										<label for="iPais">Pais</label>
-										<input type="text" class="form-control" id="iPais" name="iPais">
+										<input type="password" class="form-control" id="iPassword" name="iPassword" required>
 									</div>
 									<div class="form-group">
 										<label for="iTelefono">Teléfono</label>
-										<input type="number" class="form-control" id="iTelefono" name="iTelefono">
-									</div>
-									<div class="form-group">
-										<label for="iTelefonoAdicional">Teléfono Adicional</label>
-										<input type="number" class="form-control" id="iTelefonoAdicional" name="iTelefonoAdicional">
-									</div>
-									<div class="form-group">
-										<label for="iFoto">Foto de Perfil</label>
-										<input type="file" id="iFoto">
+										<input type="number" class="form-control" id="iTelefono" name="iTelefono" required>
 									</div>
 								</div>
 							</div>

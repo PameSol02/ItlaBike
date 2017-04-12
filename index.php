@@ -34,7 +34,7 @@ if ($_POST) {
 	$user->apellido = $_POST['iApellido'];
 	$user->email = $_POST['iEmail'];
 	$user->password = $_POST['iPassword'];
-				//$user->foto = $_POST['iFoto'];
+	$user->telefono = $_POST['iTelefono'];
 	$user->rolId = 1;
 
 	$rs = UserDB::insert($user);
