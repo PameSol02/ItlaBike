@@ -86,8 +86,13 @@ create table anuncioImage (
     anuncioId int not null,
     
     constraint pk_anuncionimageid primary key (anuncioImageId),
-    constraint fk_anuncioidimage foreign key (anuncioId) references Anuncio (anuncioId) on delete cascade
+    constraint fk_anuncioidimage foreign key (anuncioId) references Anuncio (anuncioId)
 );
+
+select * from anuncioImage;
+select * from anuncio;
+
+delete from anuncio where anuncioid > 0;
 
 
 select * from anuncio;

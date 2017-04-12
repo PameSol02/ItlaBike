@@ -54,6 +54,7 @@ require_once("database/userDB.php");
 			unset($_SESSION['user_id']);
 			unset($_SESSION['user_name']);
 			unset($_SESSION['user_image']);
+			unset($_SESSION['is_admin']);
 		}
 	}
 ?>

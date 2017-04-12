@@ -41,6 +41,26 @@ class UserDB {
 		}
 	}
 
+	public static function adminLogin($email, $pass) {
+		self::checkDBC();
+		$con = self::$connection->conn;
+
+		$sql = "SELECT * FROM admin WHERE email = '{$email}' and password = '{$pass}';";
+
+		$result = mysqli_query($con, $sql);
+
+		$data = array();
+		while ($row = mysqli_fetch_object($result)) {
+			$data[] = $row;
+		}
+
+		if (count($data) == 1) {
+			return $data[0];
+		} else {
+			return false;
+		}
+	}
+
 	public static function validateIfEmailExists($email) {
 		self::checkDBC();
 		$con = self::$connection->conn;
@@ -195,6 +215,30 @@ class UserDB {
 		return $data;
 	}
 
+	public static function getPublicidad() {
+		self::checkDBC();
+		$con = self::$connection->conn;
+
+		$sql = "SELECT * FROM anuncioPubicitario";
+
+		$result = mysqli_query($con, $sql);
+
+		$data = array();
+		while ($row = mysqli_fetch_object($result)) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
+
+	public static function deletePublicidad($id) {
+		self::checkDBC();
+		$con = self::$connection->conn;
+
+		$sql = "DELETE FROM anuncioPubicitario WHERE anuncioPublicitarioId = $id";
+		mysqli_query($con, $sql);
+	}
+
 	public static function deleteAdd($id) {
 		self::checkDBC();
 		$con = self::$connection->conn;
@@ -241,6 +285,20 @@ class UserDB {
 		$con = self::$connection->conn;
 
 		$sql = "INSERT INTO UsuarioDireccion (usuarioId, calle, numero, sector, ciudad, provincia, pais) VALUES ('{$address->usuarioId}', '{$address->calle}', '{$address->numero}', '{$address->sector}', '{$address->ciudad}', '{$address->provincia}', '{$address->pais}')";
+
+		try {
+			mysqli_query($con, $sql);
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+
+	public static function insertPublicidad($link, $foto){
+		self::checkDBC();
+		$con = self::$connection->conn;
+
+		$sql = "INSERT INTO anuncioPubicitario (link, foto) VALUES ('{$link}', '{$foto}')";
 
 		try {
 			mysqli_query($con, $sql);
